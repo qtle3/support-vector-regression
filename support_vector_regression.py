@@ -20,9 +20,8 @@ y = y.reshape(-1, 1)
 
 # Feature Scaling
 sc_x = StandardScaler()
-X = sc_x.fit_transform(X)
-
 sc_y = StandardScaler()
+X = sc_x.fit_transform(X)
 y = sc_y.fit_transform(y)
 
 print(X)
@@ -31,3 +30,6 @@ print(y)
 # Training the SVR model with the Gaussian Radial Basis Function Kernal on the whole dataset
 regressor = SVR(kernel="rbf")
 regressor.fit(X, y)
+
+# Reverse Scaling and Predict a new result
+sc_y.inverse_transform(regressor.predict(sc_x.transform([[6.5]])).reshape(-1, 1))
