@@ -7,7 +7,7 @@ import matplotlib as plt
 
 # import sklearn libraries
 from sklearn.preprocessing import StandardScaler
-
+from sklearn.svm import SVR
 
 # import dataset
 dataset = pd.read_csv("Position_Salaries.csv")
@@ -27,3 +27,7 @@ y = sc_y.fit_transform(y)
 
 print(X)
 print(y)
+
+# Training the SVR model with the Gaussian Radial Basis Function Kernal on the whole dataset
+regressor = SVR(kernel="rbf")
+regressor.fit(X, y)
