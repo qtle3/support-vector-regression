@@ -15,6 +15,7 @@ X = dataset.iloc[:, 1:-1].values
 y = dataset.iloc[:, -1].values
 
 print(dataset)
+# reshape in SVR
 y = y.reshape(-1, 1)
 
 
@@ -24,6 +25,7 @@ sc_y = StandardScaler()
 X = sc_x.fit_transform(X)
 y = sc_y.fit_transform(y)
 
+# print results
 print(X)
 print(y)
 
